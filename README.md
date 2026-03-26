@@ -102,13 +102,35 @@ geospatial-anomaly-detection/
     └── architecture.md
 ```
 
-## Quick Start
+## Quick Start with Docker
+
+The fastest way to run the full pipeline — no local Python setup required.
+
+```bash
+# Clone
+git clone https://github.com/osth0006/geospatial-anomaly-detection.git
+cd geospatial-anomaly-detection
+
+# Run the anomaly detection pipeline
+docker-compose up analysis
+
+# Or launch the interactive Jupyter notebook
+docker-compose up notebook
+# Then open http://localhost:8888 in your browser
+```
+
+**Volume mounts:** The `data/` and `output/` directories are mounted into the container, so generated data and results persist on your host machine. The `notebooks/` directory is also mounted for the notebook service, so edits are saved locally.
+
+## Quick Start (Local)
 
 ```bash
 # Clone and install
 git clone https://github.com/osth0006/geospatial-anomaly-detection.git
 cd geospatial-anomaly-detection
 pip install -e ".[dev]"
+
+# Run the pipeline
+python run_pipeline.py
 
 # Run tests
 pytest tests/ -v
