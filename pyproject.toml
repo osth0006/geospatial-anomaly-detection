@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geospatial-anomaly-detection"
+version = "0.1.0"
+description = "Deep learning anomaly detection on geospatial/temporal movement data"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "osth0006"}]
+keywords = ["anomaly-detection", "geospatial", "deep-learning", "pytorch", "trajectory"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "torch>=2.0",
+    "scikit-learn>=1.3",
+    "pandas>=2.0",
+    "geopandas>=0.14",
+    "numpy>=1.24",
+    "folium>=0.15",
+    "plotly>=5.18",
+    "shapely>=2.0",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "jupyter>=1.0",
+    "nbformat>=5.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.1"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
